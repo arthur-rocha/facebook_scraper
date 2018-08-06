@@ -51,16 +51,16 @@ FB_Scraper=function(f,min_freq=5){  ##choose the min_freq to plot(wordcloud)
   #remove accents and split data to vector
   mining_split=function(vec){
     
-    palav=vec %>% gsub(pattern = "ç",replacement =  "c", perl = TRUE) %>%
-      gsub(pattern = "é",replacement =  "e", perl = TRUE)%>%
-      gsub(pattern = "ê",replacement =  "e", perl = TRUE) %>%
-      gsub(pattern = "í",replacement =  "i", perl = TRUE) %>%
-      gsub(pattern = "ã",replacement =  "a", perl = TRUE) %>%
-      gsub(pattern = "â",replacement =  "a", perl = TRUE) %>%
-      gsub(pattern = "á",replacement =  "a", perl = TRUE) %>%
-      gsub(pattern = "à",replacement =  "a", perl = TRUE) %>%
-      gsub(pattern = "õ",replacement =  "o", perl = TRUE) %>%
-      gsub(pattern = "ó",replacement =  "o", perl = TRUE) 
+    palav=vec %>% gsub(pattern = "Ã§",replacement =  "c", perl = TRUE) %>%
+      gsub(pattern = "Ã©",replacement =  "e", perl = TRUE)%>%
+      gsub(pattern = "Ãª",replacement =  "e", perl = TRUE) %>%
+      gsub(pattern = "Ã­",replacement =  "i", perl = TRUE) %>%
+      gsub(pattern = "Ã£",replacement =  "a", perl = TRUE) %>%
+      gsub(pattern = "Ã¢",replacement =  "a", perl = TRUE) %>%
+      gsub(pattern = "Ã¡",replacement =  "a", perl = TRUE) %>%
+      gsub(pattern = "Ã ",replacement =  "a", perl = TRUE) %>%
+      gsub(pattern = "Ãµ",replacement =  "o", perl = TRUE) %>%
+      gsub(pattern = "Ã³",replacement =  "o", perl = TRUE) 
     
     palav=stri_split(palav,regex = " ") %>% unlist() 
     return(palav[palav %nin% stopbr])
@@ -70,7 +70,7 @@ FB_Scraper=function(f,min_freq=5){  ##choose the min_freq to plot(wordcloud)
   #apply the function
   word_data= sapply(pfinal,FUN = mining_split) %>% unlist()
   
-  #custom pallete
+  #custom palette
   colors_pal <- colorRampPalette(c("grey23", "#ffca00"))
   
   #wordcloud
